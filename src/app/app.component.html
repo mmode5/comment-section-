@@ -1,0 +1,59 @@
+<div class="comments">
+  <div id="old-comn" *ngFor="let item of myJson['comments']; let index = index">
+    <div class="full-comment">
+      <div class="comment container">
+        <div class="score">
+          <button (click)="increase(index)">
+            <img src="../assets/images/icon-plus.svg" />
+          </button>
+          <p>
+            {{ item.score }}
+          </p>
+
+          <button (click)="decrease(index)">
+            <img src="../assets/images/icon-minus.svg" />
+          </button>
+        </div>
+
+        <div class="user">
+          <img src="{{ item.user.image.png }}" />
+
+          <p class="username">
+            {{ item.user.username }}
+          </p>
+
+          <span *ngIf="item.user.username === myJson.currentUser.username">
+            <p class="me">you</p>
+          </span>
+          <p class="createdAt">{{ item.createdAt }}</p>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="inProgressTasks?.length === 0"> -->
+
+      <!-- id="invisable" -->
+      <div class="reply container">
+        <img
+          src="../assets/images/avatars/image-juliusomo.png"
+          alt=""
+          class="usr-img"
+        />
+        <textarea id="cmnt-input" placeholder="Add a comment..."></textarea>
+        <button id="send-btn">SEND</button>
+      </div>
+
+      <!-- id="invisable" -->
+      <div id="popUpbox">
+        <div class="popUp container">
+          <h3>Delete comment</h3>
+          <p>
+            Are you sure you want to delete this comment? This will remove the
+            comment and cant be undone
+          </p>
+          <button class="yes" onclick="yes()">YES,DELETE</button>
+          <button class="no" onclick="no()">NO,CANCEL</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

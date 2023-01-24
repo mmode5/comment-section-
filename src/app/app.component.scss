@@ -1,0 +1,207 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+}
+p {
+  line-height: 1.5;
+}
+body {
+  height: 100%;
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.comments {
+  max-width: 75ch;
+  margin: auto;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+
+.container {
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: white;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background-color: white;
+  color: #9033ff;
+}
+button:hover {
+  filter: saturate(80%);
+}
+
+.reply {
+  display: grid;
+  margin-bottom: 1rem;
+  grid-template-areas: "photo input btn";
+  grid-template-columns: min-content auto min-content;
+  justify-items: center;
+  gap: 1rem;
+  min-height: 9rem;
+}
+.reply img {
+  grid-area: photo;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.reply button {
+  grid-area: btn;
+  align-self: flex-start;
+}
+.reply textarea {
+  grid-area: input;
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  resize: none;
+}
+
+#send-btn {
+  background-color: #9033ff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+}
+
+.comment {
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-areas:
+    "score user controls"
+    "score comment comment"
+    "score comment comment";
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  row-gap: 1rem;
+}
+
+.score {
+  color: #9033ff;
+  font-weight: 500;
+  grid-area: score;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.1rem;
+  /* padding: 0.75rem; */
+  /* padding-top: 2rem; */
+  width: 2.8rem;
+  height: 6rem;
+  box-sizing: content-box;
+  background-color: #e9e8e8;
+  border-radius: 8px;
+}
+.score button {
+  padding: 0.4rem;
+  background-color: #e9e8e8;
+}
+
+.user {
+  width: 100%;
+  grid-area: user;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.user img {
+  width: 40px;
+}
+.username {
+  font-weight: 600;
+}
+
+.createdAt {
+  color: #abb2b9;
+}
+
+.txt {
+  grid-area: comment;
+  width: 100%;
+}
+
+.replies {
+  margin-left: 2.5rem;
+  padding-left: 2.4rem;
+  border-left: 1px solid #9033ff;
+}
+
+.me {
+  color: white;
+  background-color: #9033ff;
+  width: 2.5rem;
+  height: 1.5rem;
+  margin-top: 0.3rem;
+  text-align: center;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.deleteBtn {
+  color: red;
+}
+
+#popUpbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.popUp {
+  padding: 1.5rem;
+  max-width: 36ch;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "heading heading"
+    "body body"
+    "no yes";
+}
+
+.popUp h3 {
+  grid-area: heading;
+}
+
+.popUp p {
+  grid-area: body;
+  line-height: 1.5;
+}
+
+.popUp button {
+  border-radius: 8px;
+  border: none;
+  font-weight: 500;
+  height: 2rem;
+  color: white;
+}
+
+.popUp .yes {
+  grid-area: yes;
+  background-color: red;
+}
+.popUp .no {
+  grid-area: no;
+  background-color: grey;
+}
+
+/* #invisable {
+        display: none;
+      } */

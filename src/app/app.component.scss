@@ -72,6 +72,11 @@ button:hover {
   border-radius: 4px;
 }
 
+.error-txt {
+  margin-top: 1rem;
+  color: red;
+}
+
 .comment {
   margin-bottom: 1rem;
   display: grid;
@@ -159,7 +164,6 @@ button:hover {
   left: 0;
   height: 100%;
   width: 100%;
-  display: none;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.3);
@@ -169,6 +173,9 @@ button:hover {
   padding: 1.5rem;
   max-width: 36ch;
   display: grid;
+  width: 30%;
+  margin: auto;
+  margin-top: 15rem;
   gap: 1rem;
   grid-template-areas:
     "heading heading"
@@ -201,7 +208,3 @@ button:hover {
   grid-area: no;
   background-color: grey;
 }
-
-/* #invisable {
-        display: none;
-      } */

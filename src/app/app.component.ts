@@ -80,8 +80,13 @@ export class AppComponent {
       },
     ],
   };
+  // ჯესონიდან როგორ ვქნა და არა ესე?
 
-  show = true;
+  showPopUp: boolean = false;
+  newComment: string = '';
+  error: string = '';
+  indexOfComment: number = 0;
+  globalId: number = 5;
 
   increase(index: number) {
     this.myJson.comments[index].score++;
@@ -94,5 +99,38 @@ export class AppComponent {
 
   isMe(index: number) {
     return;
+  }
+
+  //time ჩემით რომ არ მეწეროს?
+  addComment() {
+    if (this.newComment === '') {
+      this.error =
+        'Look Like You Missed Something. Please Fill In All Required Fields With Valid Information';
+      return;
+    }
+    this.error = '';
+    this.myJson.comments.push({
+      id: this.globalId++,
+      content: this.newComment,
+      createdAt: 'now',
+      score: 1,
+      user: this.myJson.currentUser,
+      replies: [],
+    });
+    console.log(this.newComment);
+  }
+
+  popUp(index: number) {
+    this.indexOfComment = index;
+    this.chageStateOfPopUp();
+  }
+
+  delete() {
+    this.myJson.comments.splice(this.indexOfComment, 1);
+    this.chageStateOfPopUp();
+  }
+
+  chageStateOfPopUp() {
+    this.showPopUp = !this.showPopUp;
   }
 }

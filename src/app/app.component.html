@@ -37,8 +37,9 @@
               <img src="../assets/images/icon-delete.svg" /> Delete
             </button>
             <!-- (click)="edit()" -->
-            <button class="editBtn">
-              <img src="../assets/images/icon-edit.svg" /> Edit
+            <button class="editBtn" (click)="onEdit()">
+              <img src="../assets/images/icon-edit.svg" />
+              Edit
             </button>
           </div>
         </span>
@@ -49,25 +50,113 @@
             <img src="../assets/images/icon-reply.svg" /> Reply
           </button>
         </span>
-        <p class="txt">{{ item.content }}</p>
+
+        <span *ngIf="item.user.username === myJson.currentUser.username">
+          <p class="txt" [contentEditable]="editable">
+            {{ item.content }}
+          </p>
+        </span>
+        <span *ngIf="item.user.username !== myJson.currentUser.username">
+          <p class="txt">
+            {{ item.content }}
+          </p>
+        </span>
       </div>
+
+      <!-- ამის გადაკოპირების გარეშე ვერ ვიზამ? თავიდან რომ არ ვაკოპირო -->
+      <span *ngIf="item?.replies?.length !== 0">
+        <!-- <div
+          class="replies"
+          *ngFor="
+            let item of myJson['comments'][index].replies.length;
+            let index = index
+          "
+        >
+          <div id="old-comn" *ngFor="let item of [1, 2]; let index = index">
+            <div>cd</div>
+          </div>
+        </div> -->
+        <span *ngFor="let item of item.replies; let index = index">
+          <div class="replies">
+            <div class="full-comment>">
+              <div class="comment container">
+                <!-- არ მუშაობს -->
+                <!-- score -->
+                <div class="score">
+                  <button (click)="increase(index)">
+                    <img src="../assets/images/icon-plus.svg" />
+                  </button>
+                  <p>
+                    {{ item.score }}
+                  </p>
+
+                  <button (click)="decrease(index)">
+                    <img src="../assets/images/icon-minus.svg" />
+                  </button>
+                </div>
+
+                <!-- user -->
+                <div class="user">
+                  <img src="{{ item.user.image.png }}" />
+
+                  <p class="username">
+                    {{ item.user.username }}
+                  </p>
+
+                  <span
+                    *ngIf="item.user.username === myJson.currentUser.username"
+                  >
+                    <p class="me">you</p>
+                  </span>
+                  <p class="createdAt">{{ item.createdAt }}</p>
+                </div>
+
+                <!-- control ორი იფ წერია და სხვანაირად თუ შეიძლება -->
+                <span
+                  *ngIf="item.user.username === myJson.currentUser.username"
+                >
+                  <div class="btns">
+                    <button class="deleteBtn" (click)="popUp(index)">
+                      <img src="../assets/images/icon-delete.svg" /> Delete
+                    </button>
+                    <!-- (click)="edit()" -->
+                    <button class="editBtn" (click)="onEdit()">
+                      <img src="../assets/images/icon-edit.svg" />
+                      Edit
+                    </button>
+                  </div>
+                </span>
+
+                <span
+                  *ngIf="item.user.username !== myJson.currentUser.username"
+                >
+                  <!-- (click)="reply()" -->
+                  <button class="replyBtn">
+                    <img src="../assets/images/icon-reply.svg" /> Reply
+                  </button>
+                </span>
+
+                <span
+                  *ngIf="item.user.username === myJson.currentUser.username"
+                >
+                  <p class="txt" [contentEditable]="editable">
+                    {{ item.content }}
+                  </p>
+                </span>
+                <span
+                  *ngIf="item.user.username !== myJson.currentUser.username"
+                >
+                  <p class="txt">
+                    {{ item.content }}
+                  </p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </span>
+      </span>
     </div>
-
-    <!-- ამის გადაკოპირების გარეშე ვერ ვიზამ? -->
-    <span *ngIf="item?.replies?.length !== 0">
-      <div
-        class="replies"
-        *ngFor="
-          let item of myJson['comments'][index].replies;
-          let index = index
-        "
-      >
-        vkh
-      </div>
-    </span>
   </div>
-
-  <!-- content -->
 
   <!-- id="invisable" -->
 

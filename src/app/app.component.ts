@@ -81,16 +81,25 @@ export class AppComponent {
     ],
   };
   // ჯესონიდან როგორ ვქნა და არა ესე?
-
+  // local storage?
+  // კომპონენტტები?
   showPopUp: boolean = false;
   newComment: string = '';
   error: string = '';
   indexOfComment: number = 0;
   globalId: number = 5;
+  replies: any[] = [];
+  editable: boolean = false;
+
+  onEdit() {
+    this.editable = !this.editable;
+    console.log('dwx');
+  }
 
   increase(index: number) {
     this.myJson.comments[index].score++;
   }
+
   decrease(index: number) {
     if (this.myJson.comments[index].score > 0) {
       this.myJson.comments[index].score--;
@@ -109,6 +118,7 @@ export class AppComponent {
       return;
     }
     this.error = '';
+
     this.myJson.comments.push({
       id: this.globalId++,
       content: this.newComment,
@@ -117,6 +127,7 @@ export class AppComponent {
       user: this.myJson.currentUser,
       replies: [],
     });
+    this.newComment = '';
     console.log(this.newComment);
   }
 
